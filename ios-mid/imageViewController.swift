@@ -16,6 +16,7 @@ class imageViewController: UIViewController, UITableViewDataSource,UITableViewDe
     var type = "NULL"
     var location = "NULL"
     var descriptio = "NULL"
+    var how = "HOW TO GET HERE"
     
     
     
@@ -23,7 +24,7 @@ class imageViewController: UIViewController, UITableViewDataSource,UITableViewDe
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3;
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -43,6 +44,12 @@ class imageViewController: UIViewController, UITableViewDataSource,UITableViewDe
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing:RestaurantDetailTextCell.self), for: indexPath) as! RestaurantDetailTextCell
             cell.descriptionLabel.text = descriptio
             return cell
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing:RestaurantDetailMapCell.self), for: indexPath) as! RestaurantDetailMapCell
+            print(location)
+            cell.configure(location: location)
+            return cell
+
         default:
             fatalError("Failed to instantiate the table view cell")
         }
@@ -59,7 +66,7 @@ class imageViewController: UIViewController, UITableViewDataSource,UITableViewDe
             phone = "NULL"
             restaurantNames = "小灰蝶-1"
             type = "Araragi"
-            location = "物種分布於東亞。"
+            location = "台灣中部"
             descriptio = "中小型灰蝶。軀體背側褐色，腹側白色。前翅前緣弧形。後翅CuA2脈末端有尾突。翅背面底色褐色，前翅中央有淺色紋。腹面底色白色，上有許多小黑斑，於後翅後半較模糊。臀區附近有橙色斑紋，於CuA1室有黑斑。前翅緣毛褐色，後翅外緣毛褐色、內緣毛白色。"
             
         }
@@ -68,7 +75,8 @@ class imageViewController: UIViewController, UITableViewDataSource,UITableViewDe
             phone = "波葉山螞蝗"
             restaurantNames = "小灰蝶-2"
             type = "Rapala nissa hirayamana"
-            location = "分布於低、中海拔山區，不普遍。。"
+            location = "台中市"
+           // location = "分布於低、中海拔山區，不普遍。。"
             descriptio = "(小灰蝶科)展翅 31 - 34 mm， 雄蟲翅膀表面暗褐色具藍紫色光澤，翅腹面褐色，前、後翅各具褐色的橫帶，邊緣鑲不明顯的白邊，雌、雄外觀近似但雌蟲後翅近基部有一枚明顯的黃褐色斑。"
             
         }
@@ -202,6 +210,12 @@ class imageViewController: UIViewController, UITableViewDataSource,UITableViewDe
     }
     
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showMap"{
+                let destinationController = segue.destination as!mapViewController
+                destinationController.location = location
+            }
+        }
     /*
     // MARK: - Navigation
 
