@@ -5,3 +5,8 @@
 程式執行結果
 
 ![Alt text](https://github.com/NGKAWAI/ios-mid/blob/master/%E6%93%B7%E5%8F%96.PNG)
+
+https://github.com/NGKAWAI/ios-mid
+
+程式不完美
+地圖功能簡單
